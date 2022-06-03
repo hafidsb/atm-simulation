@@ -2,39 +2,39 @@ import java.util.*;
 
 public class AtmSimulation {
     public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in);
+        AtmSession session = new AtmSession();
         List<Account> registeredAccounts = generateAccounts();
 
-        boolean appIsRunning = true;
-        boolean inWelcomeScreen = true;
-        int input = 0;
-
-        while (appIsRunning) {
+        while (session.isRunning()) {
             System.out.println("Welcome to the ATM Simulation!");
 
-            while (inWelcomeScreen) {
-                System.out.print("Enter Account Number: ");
-                String accountNumber = myScanner.nextLine();
-                if (invalidLogin(accountNumber)) continue;
-
-                System.out.print("Enter PIN: ");
-                String pin = myScanner.nextLine();
-                if (invalidLogin(pin)) continue;
-
-                if (!accountFound(registeredAccounts, accountNumber, pin)) {
-                    System.out.println("Invalid Account Number/PIN!\n");
-                    continue;
-                }
-                inWelcomeScreen = false;
+            while (session.isInWelcomeScreen()) {
+                session.processLogin(registeredAccounts);
             }
 
-            printMenu();
-            appIsRunning = false;
-        }
-    }
+            while (session.isInTransactionScreen()) {
+                transactionScreen();
+                session.processTransaction();
+            }
 
-    static void printMenu() {
-        System.out.println("Login Success");
+            while (session.isInWithdrawScreen()) {
+                withdrawScreen();
+                session.processWithdraw();
+            }
+
+            while (session.isInOtherWithdrawScreen()) {
+                otherWithdrawScreen();
+                session.processOtherWithdraw();
+            }
+
+            while (session.isInSummaryScreen()) {
+                session.printWithdrawSummary();
+                summaryScreen();
+
+            }
+
+            session.setRunning(false);
+        }
     }
 
     static List<Account> generateAccounts() {
@@ -43,33 +43,33 @@ public class AtmSimulation {
         return Arrays.asList(account1, account2);
     }
 
-    static boolean invalidLogin(String input) {
-        if (input.length() != 6) {
-            System.out.println("Input should have 6 digits length!\n");
-            return true;
-        }
-
-        if (!isNumeric(input)) {
-            System.out.println("Input should only contains numbers!\n");
-            return true;
-        }
-        return false;
+    static void transactionScreen() {
+        System.out.println("Login Success");
+        System.out.println("1. Withdraw");
+        System.out.println("2. Fund Transfer");
+        System.out.println("3. Exit");
+        System.out.print("Please choose an option[default is 3]: ");
     }
 
-    static boolean isNumeric(String str) {
-        return str.chars().allMatch(Character::isDigit);
+    static void withdrawScreen() {
+        System.out.println("Withdraw Funds");
+        System.out.println("1. $10");
+        System.out.println("2. $50");
+        System.out.println("3. $100");
+        System.out.println("4. Other");
+        System.out.println("5. Back");
+        System.out.print("Please choose an option[default is 5]: ");
     }
 
-    static boolean accountFound(List<Account> accounts, String accountNumber, String pin) {
-        boolean found = false;
-        for (Account account : accounts) {
-            if (!account.getId().equals(accountNumber)) continue;
-            if (!account.getPin().equals(pin)) continue;
+    static void otherWithdrawScreen() {
+        System.out.println("Other Withdraw");
+        System.out.print("Please enter amount to withdraw:: ");
+    }
 
-            found = true;
-            break;
-        }
-
-        return found;
+    static void summaryScreen() {
+        System.out.println("");
+        System.out.println("1. Transaction");
+        System.out.println("2. Exit");
+        System.out.print("Please choose an option[default is 2]: ");
     }
 }

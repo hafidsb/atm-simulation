@@ -2,9 +2,9 @@ public class Account {
     private String id;
     private String name;
     private String pin;
-    private long balance;
+    private int balance;
 
-    public Account(String id, String name, String pin, long balance) {
+    public Account(String id, String name, String pin, int balance) {
         this.id = id;
         this.name = name;
         this.pin = pin;
@@ -35,11 +35,11 @@ public class Account {
         this.pin = pin;
     }
 
-    public long getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 }
