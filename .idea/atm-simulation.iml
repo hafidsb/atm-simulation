@@ -13,7 +13,9 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/lombok-1.18.22-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
