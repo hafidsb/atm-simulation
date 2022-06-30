@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="atm-simulation:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/atm_simulation_jar</output-path>
+    <root id="archive" name="atm-simulation.jar">
+      <element id="module-output" name="atm-simulation" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
