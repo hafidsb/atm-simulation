@@ -1,3 +1,5 @@
+package com.hafidsb.atm_simulation.models;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 @Getter @Setter
-public class AtmSession {
+public class Session {
     private Account loggedAccount;
     private boolean running;
     private boolean inWelcomeScreen;
@@ -23,16 +25,16 @@ public class AtmSession {
     private LocalDateTime latestWithdrawDateTime;
     private FundTransfer latestFundTransfer;
 
-    public AtmSession() {
+    public Session() {
         this.running = true;
         this.inWelcomeScreen = true;
         this.sessionScanner = new Scanner(System.in);
     }
 
     public void processLogin(List<Account> registeredAccounts) {
-        System.out.print("Enter Account Number: ");
+        System.out.print("Enter com.hafidsb.atm_simulation.models.Account Number: ");
         String accountNumber = sessionScanner.nextLine();
-        if (invalidLogin(accountNumber, "Account Number")) return;
+        if (invalidLogin(accountNumber, "com.hafidsb.atm_simulation.models.Account Number")) return;
 
         System.out.print("Enter PIN: ");
         String pin = sessionScanner.nextLine();
@@ -40,7 +42,7 @@ public class AtmSession {
 
         this.loggedAccount = findAccount(registeredAccounts, accountNumber, pin);
         if (this.loggedAccount == null) {
-            System.out.println("Invalid Account Number/PIN!\n");
+            System.out.println("Invalid com.hafidsb.atm_simulation.models.Account Number/PIN!\n");
             return;
         }
 
@@ -160,7 +162,7 @@ public class AtmSession {
 
         System.out.println();
         System.out.println("Transfer Confirmation");
-        System.out.println("Destination Account: " + strAccountNumber);
+        System.out.println("Destination com.hafidsb.atm_simulation.models.Account: " + strAccountNumber);
         System.out.println("Transfer Amount: $" + transferAmount);
         System.out.println("Reference Number: " + referenceNumber);
         System.out.println();
@@ -219,7 +221,7 @@ public class AtmSession {
     public void printTransferSummary() {
         System.out.println();
         System.out.println("Fund Transfer Summary");
-        System.out.println("Destination Account: " + this.latestFundTransfer.getDestinationAccount().getId());
+        System.out.println("Destination com.hafidsb.atm_simulation.models.Account: " + this.latestFundTransfer.getDestinationAccount().getId());
         System.out.println("Transfer Amount: " + this.latestFundTransfer.getTransferAmount());
         System.out.println("Reference Number: " + this.latestFundTransfer.getRefNumber());
         System.out.println("Current Balance: " + this.loggedAccount.getBalance());

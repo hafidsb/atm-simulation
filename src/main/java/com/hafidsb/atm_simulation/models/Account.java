@@ -1,3 +1,5 @@
+package com.hafidsb.atm_simulation.models;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

@@ -1,3 +1,6 @@
+package com.hafidsb.atm_simulation.models;
+
+import com.hafidsb.atm_simulation.models.Account;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

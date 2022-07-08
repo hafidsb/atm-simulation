@@ -1,8 +1,13 @@
+package com.hafidsb.atm_simulation;
+
+import com.hafidsb.atm_simulation.models.Account;
+import com.hafidsb.atm_simulation.models.Session;
+
 import java.util.*;
 
 public class AtmSimulation {
     public static void main(String[] args) {
-        AtmSession session = new AtmSession();
+        Session session = new Session();
         List<Account> registeredAccounts = generateAccounts();
 
         while (session.isRunning()) {
