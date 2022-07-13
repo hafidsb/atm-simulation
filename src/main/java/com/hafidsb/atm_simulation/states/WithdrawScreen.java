@@ -54,7 +54,7 @@ public class WithdrawScreen extends BaseState implements IState{
         }
         if (canWithdrawFunds(session, amount)) {
             withdrawFunds(session, amount);
-            return SUMMARY;
+            return TRANSACTION;
         } else {
             return WITHDRAW;
         }

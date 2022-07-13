@@ -15,8 +15,8 @@ public class SummaryScreen extends BaseState implements IState{
     public void printInitialMessage(ATMSession session) {
         System.out.println();
         System.out.println("Withdraw Summary");
-        System.out.println("Date: " + session.getLatestTransaction().getTimestamp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
-        System.out.println("Withdraw: " + session.getLatestTransaction().getAmount());
+        System.out.println("Date: " + session.getLatestWithdraw().getTimestamp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
+        System.out.println("Withdraw: " + session.getLatestWithdraw().getAmount());
         System.out.println("Current Balance: " + session.getLoggedAccount().getBalance());
 
         System.out.println();

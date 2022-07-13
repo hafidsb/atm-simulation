@@ -32,7 +32,7 @@ public class TransactionUtil {
                 session.getLoggedAccount().getId()
         );
 
-        session.setLatestTransaction(transaction);
+        session.setLatestWithdraw(transaction);
         session.getAtm().addWithdraw(transaction);
         session.getLoggedAccount().reduceBalance(amount);
     }
@@ -63,7 +63,7 @@ public class TransactionUtil {
                 destination.getId()
         );
 
-        session.setLatestTransaction(transaction);
+        session.setLatestTransfer(transaction);
         session.getAtm().addTransfer(transaction);
         session.getLoggedAccount().reduceBalance(amount);
         destination.addBalance(amount);

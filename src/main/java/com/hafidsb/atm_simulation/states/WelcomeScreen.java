@@ -38,7 +38,7 @@ public class WelcomeScreen extends BaseState implements IState{
             System.out.println("Invalid Account Number/PIN!\n");
             return WELCOME;
         }
-
+        System.out.println("Login success!");
         return TRANSACTION;
     }
 }

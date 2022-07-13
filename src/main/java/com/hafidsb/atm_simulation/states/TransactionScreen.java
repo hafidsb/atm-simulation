@@ -14,7 +14,6 @@ public class TransactionScreen extends BaseState implements IState{
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
-        System.out.println("Login Success");
         System.out.println("1. Withdraw");
         System.out.println("2. Fund Transfer");
         System.out.println("3. Exit");

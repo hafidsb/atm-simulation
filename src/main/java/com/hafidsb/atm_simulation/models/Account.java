@@ -15,6 +15,6 @@ public class Account {
     }
 
     public void reduceBalance(int amount) {
-        this.balance += amount;
+        this.balance -= amount;
     }
 }

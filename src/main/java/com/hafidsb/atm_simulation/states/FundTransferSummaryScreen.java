@@ -21,8 +21,9 @@ public class FundTransferSummaryScreen extends BaseState implements IState{
         System.out.println("Current Balance: " + session.getLoggedAccount().getBalance());
 
         System.out.println();
-        System.out.println("Please enter destination account and press enter to continue or ");
-        System.out.print("press enter to go back to Transaction: ");
+        System.out.println("1. Transaction");
+        System.out.println("2. Exit");
+        System.out.print("Please choose an option[default is 2]: ");
     }
 
     @Override
