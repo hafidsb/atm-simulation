@@ -6,7 +6,7 @@ Simple ATM Simulation using Java Programming Language
 We were using a fixed set of accounts and keeping them into memory. As we're evolving our app, we'll need to adjust it for a few requirements
 
 - Read the account initial info from a csv file
-    - Fields will remain ` Name `, ` PIN `, ` Balance `, ` com.hafidsb.atm_simulation.models.Account Number `
+    - Fields will remain ` Name `, ` PIN `, ` Balance `, ` Account Number `
 - CSV file needs to have at least 20 records. Be creative :-)
 - In order to read from CSV file, apply everything you've learned so far in this unit.
 - We can safely assume that the CSV file will be on your disk, so you can pass an absolute path to read it
