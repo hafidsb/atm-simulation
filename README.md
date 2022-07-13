@@ -12,7 +12,7 @@ We were using a fixed set of accounts and keeping them into memory. As we're evo
 - We can safely assume that the CSV file will be on your disk, so you can pass an absolute path to read it
 - Pass the file location as a program argument
 - Add the following validations:
-    - There can't be 2 different accounts with the same com.hafidsb.atm_simulation.models.Account Number {{number}} (use this as a message)
+    - There can't be 2 different accounts with the same Account Number {{number}} (use this as a message)
     - There can't be duplicated records {{record}}(use this as a message and show the whole record)
     - When any of this exceptions happens show the corresponding message on screen
 
