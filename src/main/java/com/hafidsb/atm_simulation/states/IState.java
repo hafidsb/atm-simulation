@@ -7,7 +7,7 @@ import com.hafidsb.atm_simulation.models.Account;
 import java.util.List;
 
 public interface IState {
-    void printInitialMessage();
+    void printInitialMessage(ATMSession session);
 
     /**
      * main functionality of each state

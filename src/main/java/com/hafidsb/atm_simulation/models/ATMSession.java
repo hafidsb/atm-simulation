@@ -12,6 +12,8 @@ public class ATMSession {
     private ATMStateEnum stateEnum;
     private IState stateObject;
     private Account loggedAccount;
+    private WithdrawTransaction latestWithdraw;
+    private TransferTransaction latestTransfer;
 
     public ATMSession() {
         this.atm = new ATM();
@@ -20,7 +22,7 @@ public class ATMSession {
     }
 
     public void executeStateProcess() {
-        this.stateObject.printInitialMessage();
+        this.stateObject.printInitialMessage(this);
         var accounts = this.atm.getAccounts();
         var nextStateEnum = this.stateObject.process(accounts, this);
         this.setStateEnum(nextStateEnum);

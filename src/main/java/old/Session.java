@@ -1,5 +1,6 @@
-package com.hafidsb.atm_simulation.models;
+package old;
 
+import com.hafidsb.atm_simulation.models.Account;
 import lombok.Getter;
 import lombok.Setter;
 

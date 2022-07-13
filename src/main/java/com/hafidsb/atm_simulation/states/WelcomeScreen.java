@@ -3,6 +3,7 @@ package com.hafidsb.atm_simulation.states;
 import com.hafidsb.atm_simulation.enums.ATMStateEnum;
 import com.hafidsb.atm_simulation.models.ATMSession;
 import com.hafidsb.atm_simulation.models.Account;
+import com.hafidsb.atm_simulation.utils.AccountUtil;
 import lombok.Getter;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import static com.hafidsb.atm_simulation.utils.InputValidation.validateLogin;
 @Getter
 public class WelcomeScreen extends BaseState implements IState{
     @Override
-    public void printInitialMessage() {
+    public void printInitialMessage(ATMSession session) {
         System.out.println("Welcome to the ATM Simulation!");
     }
 
@@ -31,24 +32,13 @@ public class WelcomeScreen extends BaseState implements IState{
         if (!validateLogin(pin, "PIN")) {
             return WELCOME;
         }
-
-        session.setLoggedAccount(findAccount(registeredAccounts, accountNumber, pin));
+        var account = AccountUtil.loginAccount(registeredAccounts, accountNumber, pin);
+        session.setLoggedAccount(account);
         if (session.getLoggedAccount() == null) {
             System.out.println("Invalid Account Number/PIN!\n");
             return WELCOME;
         }
 
         return TRANSACTION;
-    }
-
-    private Account findAccount(List<Account> accounts, String accountNumber, String pin) {
-        for (Account account : accounts) {
-            if (account.getId().equals(accountNumber) &&
-                    account.getPin().equals(pin)) {
-                return account;
-            }
-        }
-
-        return null;
     }
 }

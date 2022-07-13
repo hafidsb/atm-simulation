@@ -1,9 +1,10 @@
-package com.hafidsb.atm_simulation;
+package old;
 
 import com.hafidsb.atm_simulation.models.Account;
-import com.hafidsb.atm_simulation.models.Session;
+import old.Session;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class AtmSimulation {
     public static void main(String[] args) {

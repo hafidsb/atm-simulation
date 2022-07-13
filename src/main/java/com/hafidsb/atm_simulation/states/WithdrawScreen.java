@@ -7,13 +7,14 @@ import com.hafidsb.atm_simulation.models.Account;
 import java.util.List;
 
 import static com.hafidsb.atm_simulation.enums.ATMStateEnum.*;
-import static com.hafidsb.atm_simulation.utils.InputValidation.validateWithdrawFunds;
+import static com.hafidsb.atm_simulation.utils.TransactionUtil.canWithdrawFunds;
+import static com.hafidsb.atm_simulation.utils.TransactionUtil.withdrawFunds;
 import static java.lang.Integer.parseInt;
 
 public class WithdrawScreen extends BaseState implements IState{
 
     @Override
-    public void printInitialMessage() {
+    public void printInitialMessage(ATMSession session) {
         System.out.println();
         System.out.println("Withdraw Funds");
         System.out.println("1. $10");
@@ -51,18 +52,11 @@ public class WithdrawScreen extends BaseState implements IState{
                 return TRANSACTION;
             }
         }
-        if (this.withdrawFunds(session, amount)) {
+        if (canWithdrawFunds(session, amount)) {
+            withdrawFunds(session, amount);
             return SUMMARY;
         } else {
             return WITHDRAW;
         }
-    }
-    private boolean withdrawFunds(ATMSession session, int amount) {
-        int balance = session.getLoggedAccount().getBalance();
-        if (validateWithdrawFunds(amount, balance)) {
-            session.getLoggedAccount().setBalance(balance - amount);
-            return true;
-        }
-        return false;
     }
 }

@@ -9,43 +9,43 @@ import java.util.List;
 import static com.hafidsb.atm_simulation.enums.ATMStateEnum.*;
 import static java.lang.Integer.parseInt;
 
-public class TransactionScreen extends BaseState implements IState{
+public class FundTransferSummaryScreen extends BaseState implements IState{
 
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
-        System.out.println("Login Success");
-        System.out.println("1. Withdraw");
-        System.out.println("2. Fund Transfer");
-        System.out.println("3. Exit");
-        System.out.print("Please choose an option[default is 3]: ");
+        System.out.println("Fund Transfer Summary");
+        System.out.println("Destination Account: " + session.getLatestTransfer().getSenderId());
+        System.out.println("Transfer Amount: " + session.getLatestTransfer().getAmount());
+        System.out.println("Reference Number: " + session.getLatestTransfer().getReferenceNumber());
+        System.out.println("Current Balance: " + session.getLoggedAccount().getBalance());
+
+        System.out.println();
+        System.out.println("Please enter destination account and press enter to continue or ");
+        System.out.print("press enter to go back to Transaction: ");
     }
 
     @Override
     public ATMStateEnum process(List<Account> accounts, ATMSession session) {
-        int intChoice = 3;
+        int intChoice = 2;
         String strChoice = scanner.nextLine();
 
         try {
             intChoice = parseInt(strChoice);
         } catch (NumberFormatException ex) {
-            if (!strChoice.isEmpty()) return TRANSACTION;
+            if (!strChoice.isEmpty()) return FUND_TRANSFER_SUMMARY;
         }
 
         switch (intChoice) {
             case 1 -> {
-                return WITHDRAW;
+                return TRANSACTION;
             }
             case 2 -> {
-                return FUND_TRANSFER;
-            }
-            case 3 -> {
-                System.out.println("Logged out");
                 return WELCOME;
             }
             default -> {
                 System.out.println("Invalid number option!");
-                return TRANSACTION;
+                return FUND_TRANSFER;
             }
         }
     }

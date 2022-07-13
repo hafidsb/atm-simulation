@@ -9,4 +9,12 @@ public class Account {
     private String name;
     private String pin;
     private int balance;
+
+    public void addBalance(int amount) {
+        this.balance += amount;
+    }
+
+    public void reduceBalance(int amount) {
+        this.balance += amount;
+    }
 }

@@ -7,6 +7,5 @@ public enum ATMStateEnum {
     OTHER_WITHDRAW,
     SUMMARY,
     FUND_TRANSFER,
-    FUND_TRANSFER_SUMMARY,
-    EXIT
+    FUND_TRANSFER_SUMMARY
 }
