@@ -52,7 +52,7 @@ public class InputValidation {
             return false;
         }
 
-        if (destination.equals(session.getLoggedAccount())) {
+        if (destination.getId().equals(session.getLoggedAccount().getId())) {
             System.out.println("Cannot transfer to own account!");
             return false;
         }

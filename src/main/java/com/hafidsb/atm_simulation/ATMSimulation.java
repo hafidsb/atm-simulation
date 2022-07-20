@@ -1,12 +1,17 @@
 package com.hafidsb.atm_simulation;
 
+import com.hafidsb.atm_simulation.models.ATM;
 import com.hafidsb.atm_simulation.models.ATMSession;
 import com.hafidsb.atm_simulation.states.*;
 
 
 public class ATMSimulation {
     public static void main(String[] args) {
-        ATMSession newSession = new ATMSession();
+        ATM atm = new ATM();
+        if (!atm.generateFromCSV("src/main/resources/users.csv")) {
+            return;
+        }
+        ATMSession newSession = new ATMSession(atm);
         boolean running = true;
 
         while (running) {

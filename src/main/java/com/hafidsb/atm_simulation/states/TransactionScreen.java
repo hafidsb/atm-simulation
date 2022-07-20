@@ -14,6 +14,7 @@ public class TransactionScreen extends BaseState implements IState{
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
+        System.out.println("-= Transactions =-");
         System.out.println("1. Withdraw");
         System.out.println("2. Fund Transfer");
         System.out.println("3. Exit");
@@ -28,7 +29,7 @@ public class TransactionScreen extends BaseState implements IState{
         try {
             intChoice = parseInt(strChoice);
         } catch (NumberFormatException ex) {
-            if (!strChoice.isEmpty()) return TRANSACTION;
+            if (!strChoice.isEmpty()) return WELCOME;
         }
 
         switch (intChoice) {

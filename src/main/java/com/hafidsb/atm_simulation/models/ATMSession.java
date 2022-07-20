@@ -15,8 +15,8 @@ public class ATMSession {
     private WithdrawTransaction latestWithdraw;
     private TransferTransaction latestTransfer;
 
-    public ATMSession() {
-        this.atm = new ATM();
+    public ATMSession(ATM atm) {
+        this.atm = atm;
         this.stateEnum = ATMStateEnum.WELCOME;
         this.stateObject = new WelcomeScreen();
     }

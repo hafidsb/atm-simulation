@@ -15,7 +15,7 @@ public class OtherWithdrawScreen extends BaseState implements IState {
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
-        System.out.println("Other Withdraw");
+        System.out.println("-= Other Withdraw Funds =-");
         System.out.print("Please enter amount to withdraw: ");
     }
 
@@ -31,7 +31,7 @@ public class OtherWithdrawScreen extends BaseState implements IState {
             }
         } catch (NumberFormatException ex) {
             System.out.println("Invalid amount!");
-            if (!strAmount.isEmpty()) return OTHER_WITHDRAW;
+            if (!strAmount.isEmpty()) return TRANSACTION;
         }
 
         if (canWithdrawFunds(session, amount)) {

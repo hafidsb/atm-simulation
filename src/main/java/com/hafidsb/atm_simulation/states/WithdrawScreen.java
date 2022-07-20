@@ -16,7 +16,7 @@ public class WithdrawScreen extends BaseState implements IState{
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
-        System.out.println("Withdraw Funds");
+        System.out.println("-= Withdraw Funds =-");
         System.out.println("1. $10");
         System.out.println("2. $50");
         System.out.println("3. $100");
@@ -33,7 +33,7 @@ public class WithdrawScreen extends BaseState implements IState{
         try {
             intChoice = parseInt(strChoice);
         } catch (NumberFormatException ex) {
-            if (!strChoice.isEmpty()) return WITHDRAW;
+            if (!strChoice.isEmpty()) return TRANSACTION;
         }
 
         int amount;
@@ -54,7 +54,7 @@ public class WithdrawScreen extends BaseState implements IState{
         }
         if (canWithdrawFunds(session, amount)) {
             withdrawFunds(session, amount);
-            return TRANSACTION;
+            return SUMMARY;
         } else {
             return WITHDRAW;
         }

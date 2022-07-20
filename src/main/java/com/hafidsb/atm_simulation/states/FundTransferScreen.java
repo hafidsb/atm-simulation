@@ -17,6 +17,7 @@ public class FundTransferScreen extends BaseState implements IState{
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
+        System.out.println("-= Fund Transfer =-");
         System.out.println("Please enter destination account and press enter to continue or ");
         System.out.print("press enter to go back to Transaction: ");
     }
@@ -24,14 +25,14 @@ public class FundTransferScreen extends BaseState implements IState{
     @Override
     public ATMStateEnum process(List<Account> accounts, ATMSession session) {
         String strDestinationNumber = scanner.nextLine();
-        if (strDestinationNumber.isEmpty()) return FUND_TRANSFER;
+        if (strDestinationNumber.isEmpty()) return TRANSACTION;
 
         System.out.println();
         System.out.println("Please enter transfer amount and press enter to continue or");
         System.out.print("press enter to go back to Transaction: ");
 
         String strTransferAmount = scanner.nextLine();
-        if (strTransferAmount.isEmpty()) return FUND_TRANSFER;
+        if (strTransferAmount.isEmpty()) return TRANSACTION;
 
         String refNumber = generateRefNumber();
 

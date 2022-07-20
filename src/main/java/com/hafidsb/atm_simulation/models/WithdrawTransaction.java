@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 public class WithdrawTransaction extends Transaction {
-    private String withdrawId;
+    private String withdrawerId;
 
-    public WithdrawTransaction(String referenceNumber, int amount, LocalDateTime timestamp, String withdrawId) {
+    public WithdrawTransaction(String referenceNumber, int amount, LocalDateTime timestamp, String withdrawerId) {
         super(referenceNumber, amount, timestamp);
-        this.withdrawId = withdrawId;
+        this.withdrawerId = withdrawerId;
     }
 }

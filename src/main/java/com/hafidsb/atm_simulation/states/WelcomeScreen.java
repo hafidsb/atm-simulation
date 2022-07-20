@@ -21,6 +21,7 @@ public class WelcomeScreen extends BaseState implements IState{
 
     @Override
     public ATMStateEnum process(List<Account> registeredAccounts, ATMSession session) {
+        session.getAtm().generateFromCSV("src/main/resources/users.csv");
         System.out.print("Enter Account Number: ");
         String accountNumber = scanner.nextLine();
         if (!validateLogin(accountNumber, "Account Number")) {
@@ -32,13 +33,16 @@ public class WelcomeScreen extends BaseState implements IState{
         if (!validateLogin(pin, "PIN")) {
             return WELCOME;
         }
+
         var account = AccountUtil.loginAccount(registeredAccounts, accountNumber, pin);
         session.setLoggedAccount(account);
         if (session.getLoggedAccount() == null) {
             System.out.println("Invalid Account Number/PIN!\n");
             return WELCOME;
         }
+
         System.out.println("Login success!");
+        System.out.println("Welcome back, " + session.getLoggedAccount().getName() + "!");
         return TRANSACTION;
     }
 }

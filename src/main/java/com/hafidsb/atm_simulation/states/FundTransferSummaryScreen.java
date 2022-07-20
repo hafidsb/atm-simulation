@@ -14,7 +14,7 @@ public class FundTransferSummaryScreen extends BaseState implements IState{
     @Override
     public void printInitialMessage(ATMSession session) {
         System.out.println();
-        System.out.println("Fund Transfer Summary");
+        System.out.println("-= Fund Transfer Summary =-");
         System.out.println("Destination Account: " + session.getLatestTransfer().getSenderId());
         System.out.println("Transfer Amount: " + session.getLatestTransfer().getAmount());
         System.out.println("Reference Number: " + session.getLatestTransfer().getReferenceNumber());
